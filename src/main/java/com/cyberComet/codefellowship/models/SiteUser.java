@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 public class SiteUser implements UserDetails {
@@ -22,15 +23,18 @@ public class SiteUser implements UserDetails {
     private String lastname;
     private String bio;
 
+    private Date date;
+
     public SiteUser() {
     }
 
-    public SiteUser(String username, String password, String firstname, String lastname, String bio) {
+    public SiteUser(String username, String password, String firstname, String lastname, String bio, Date date) {
         this.username = username;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.bio = bio;
+        this.date = date;
     }
 
     public Long getId() {
@@ -80,5 +84,9 @@ public class SiteUser implements UserDetails {
 
     public String getBio() {
         return bio;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

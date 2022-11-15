@@ -1,0 +1,36 @@
+html{
+  background-color: rgba(70, 123, 117, 0.635);
+}
+
+header{
+  border-radius: 5px;
+  background-color: white;
+  color: rgb(79, 99, 143);
+}
+
+h1 {
+  text-align: center;
+}
+
+main{
+  color: rgb(22, 23, 41);
+}
+
+h2 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+#quiz{
+  text-align: center;
+}
+
+button {
+  margin: 100 px;
+}
+
+footer{
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+}

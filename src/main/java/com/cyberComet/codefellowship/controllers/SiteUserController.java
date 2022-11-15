@@ -12,8 +12,9 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.net.http.HttpClient;
 import java.security.Principal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -21,10 +22,8 @@ public class SiteUserController {
 
     @Autowired
     SiteUserRepository siteUserRepository;
-
     @Autowired
     PasswordEncoder passwordEncoder;
-
     @Autowired
     HttpServletRequest request;
 
@@ -59,17 +58,18 @@ public class SiteUserController {
     }
 
     @PostMapping("/signup")
-    public RedirectView createUser(String username, String password, String firstname, String lastname, String bio){
+    public RedirectView createUser(String username, String password, String firstname, String lastname, String bio, String datestring) throws ParseException {
         String hashedPW = passwordEncoder.encode(password);
-        SiteUser newUser = new SiteUser(username, hashedPW, firstname, lastname, bio);
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(datestring);
+        SiteUser newUser = new SiteUser(username, hashedPW, firstname, lastname, bio, date);
         siteUserRepository.save(newUser);
         // auto login -> httpServletRequest
         authWithHttpServletRequest(username, password);
         return new RedirectView("/");
     }
 
-    @GetMapping("/sauce")
-    public String getSauce(){
-        return "secret";
-    }
+//    @GetMapping("/sauce")
+//    public String getSauce(){
+//        return "secret";
+//    }
 }
