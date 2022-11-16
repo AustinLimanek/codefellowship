@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/home.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<a href="http://localhost:8080/">Return to profile</a>
+<h1>Hello, quest</h1>
+<div th:replace="/fragments/fragment :: img"></div>
+<h1 th:text="${friendname} + ' ' + ${username}"></h1>
+<div>
+    <ul th:each="post : ${posts}">
+        <form th:if="${friendname.equals(username)}"action ="/deletePost" method="post">
+            <fieldset>
+                <input type="hidden" name="body" th:value="${post.body}">
+                <input type="submit" value="X"/>
+            </fieldset>
+        </form>
+        <li th:text="'Post: ' + ${post.body}"></li>
+        <li th:text="'Date: ' + ${post.createdAt}"></li>
+    </ul>
+</div>
+</body>
+</html>
