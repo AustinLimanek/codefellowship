@@ -7,7 +7,6 @@
 </head>
 <body>
 <h1>This Application Has Only a Few Features But You Should Know That it is Secure!</h1>
-<h2 th:if="!${username}">Sign in to see some css formatting</h2>
 <h3 th:if="${username}" th:text="${'Current User: ' + username + ' with first name: ' + bio}"></h3>
 <a th:if="${username}" href="/logout">Log Out</a>
 <a th:if="!${username}" href="/login">Log In</a>

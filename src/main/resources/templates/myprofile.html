@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/home.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<a th:if="${username}" href="/logout">Log Out</a>
+<h1>You have successfully signed in to your account. An image of you is here and there is also information about you.</h1>
+<div th:replace="/fragments/fragment :: img"></div>
+<h2 th:text="${bio}"></h2>
+<form action ="/addPost" method="post">
+    <fieldset>
+        <legend>What's on your mind?</legend>
+        <label>Post</label>
+        <input type="text" name="body"/>
+        <input type="hidden" name="username" th:value="${username}">
+        <input type="submit" value="Post"/>
+    </fieldset>
+</form>
+<div>
+    <ul th:each="post : ${posts}">
+        <form action ="/deletePost" method="post">
+            <fieldset>
+                <input type="hidden" name="body" th:value="${post.body}">
+                <input type="submit" value="X"/>
+            </fieldset>
+        </form>
+        <li th:text="'Post: ' + ${post.body}"></li>
+        <li th:text="'Date: ' + ${post.createdAt}"></li>
+    </ul>
+</div>
+<div>
+    <ul th:each="user : ${users}">
+        <form th:action ="${'/friend/' + user.username}" method="post">
+            <fieldset>
+                <input type="hidden" name="friend" th:value="${user.username}">
+                <input type="submit" value="Visit Friend"/>
+            </fieldset>
+        </form>
+        <li th:text="'User: ' + ${user.username}"></li>
+        <li th:text="'Biography: ' + ${user.bio}"></li>
+    </ul>
+</div>
+</body>
+</html>

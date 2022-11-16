@@ -1,6 +1,10 @@
 # Secure code fellowship
 
-## Features
+## Expanded Features with v-2.0
+
+Users can make posts to their own profile. In addition, they can see all of their friends on their profile page. A user can visit another user's page, but they are not able to edit their friend's posts. Each user has a default image that is pulled from a html fragment. Furthermore, on the user profile, the user can see their biography that they edited when they sign up for the application.
+
+## Features v-1.0
 
 This application allows for user to sign up for an account using the Spring security framework. Users input information about their username, password, first name, last name, biography, and their date of birth. This information is stored into a database. The user will be directed to a webpage with basic styling and an ability to sign out.
 
