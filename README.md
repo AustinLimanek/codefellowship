@@ -2,7 +2,15 @@
 
 ## Expanded Features with v-2.1
 
+User now have the ability to follow other users (influencers). Someone who follows an influencer is part of an audience of that influencer. When you visit a influencer page you can see their audience and their influencers. In addition, when you visit your homepage you can access a feed that shows all the posts from all of your influencers. You can easily access one of your influencers by clicking the `visit influencer` button on the post.
 
+To add more influencers, just navigate to a users page a click the `add percept` button. 
+
+All of the previous features from earlier versions are still active.
+
+![My profile page](./src/main/resources/static/images/myprofile.png)
+
+![An example friend page](./src/main/resources/static/images/friendpage.png)
 
 ## Expanded Features with v-2.0
 
