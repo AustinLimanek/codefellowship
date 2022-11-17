@@ -4,9 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class SiteUser implements UserDetails {
@@ -39,6 +37,25 @@ public class SiteUser implements UserDetails {
 
     public Long getId() {
         return id;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "AudienceAndInfluencer",
+            joinColumns = {@JoinColumn(name = "audience")},
+            inverseJoinColumns = {@JoinColumn(name = "influencer")}
+    )
+    Set<SiteUser> influencers = new HashSet<>();
+
+    @ManyToMany(mappedBy = "influencers")
+    Set<SiteUser> audience = new HashSet<>();
+
+    public Set<SiteUser> getInfluencers() {
+        return influencers;
+    }
+
+    public Set<SiteUser> getAudience() {
+        return audience;
     }
 
     @Override

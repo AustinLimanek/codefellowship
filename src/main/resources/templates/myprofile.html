@@ -43,5 +43,18 @@
         <li th:text="'Biography: ' + ${user.bio}"></li>
     </ul>
 </div>
+<div>
+    <h2>Feed from current influencers</h2>
+    <ul th:each="post : ${feed}">
+        <form th:action ="${'/influencer/' + post.mySiteUser}" method="post">
+            <fieldset>
+                <input type="submit" value="Visit Influencer"/>
+            </fieldset>
+        </form>
+        <li th:text="'Post: ' + ${post.body}"></li>
+        <li th:text="'Date: ' + ${post.createdAt}"></li>
+    </ul>
+</div>
+
 </body>
 </html>

@@ -10,6 +10,15 @@
 <h1>Hello, quest</h1>
 <div th:replace="/fragments/fragment :: img"></div>
 <h1 th:text="${friendname} + ' ' + ${username}"></h1>
+
+<!--Add to influencer list-->
+<form th:if="${!friendname.equals(username)}" th:action ="${'/perceive/' + friendname}" th:method="post">
+    <fieldset>
+        <input type="hidden" name="body" th:value="${friendname}">
+        <input type="submit" value="Add Percept"/>
+    </fieldset>
+</form>
+
 <div>
     <ul th:each="post : ${posts}">
         <form th:if="${friendname.equals(username)}"action ="/deletePost" method="post">
@@ -20,6 +29,18 @@
         </form>
         <li th:text="'Post: ' + ${post.body}"></li>
         <li th:text="'Date: ' + ${post.createdAt}"></li>
+    </ul>
+</div>
+<div>
+    <h2 th:text="${'Audience of: ' + friendname}"></h2>
+    <ul th:each="user : ${audience}">
+        <li th:text="'User: ' + ${user.username}"></li>
+    </ul>
+</div>
+<div>
+    <h2 th:text="${'Influencers on: ' + friendname}"></h2>
+    <ul th:each="user : ${influencers}">
+        <li th:text="'User: ' + ${user.username}"></li>
     </ul>
 </div>
 </body>
